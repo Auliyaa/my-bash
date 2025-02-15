@@ -142,6 +142,7 @@ dev()
 export VCPKG_DISABLE_METRICS
 export VCPKG_ROOT="${DEV_ROOT}/vcpkg"
 export PATH="${PATH}:${VCPKG_ROOT}"
+export VCPKG_OVERLAY_PORTS="${DEV_ROOT}/vcpkg-registry/ports"
 
 # cmake helpers
 function cmake_debug()
@@ -154,7 +155,12 @@ function cmake_reldeb()
   cmake --preset unix-relwithdeb "${@}"
 }
 
-function cmake_release()
+function cmake_rel()
 {
   cmake --preset unix-release "${@}"
+}
+
+function ccat()
+{
+  pygmentize -g "${@}"
 }
