@@ -164,3 +164,8 @@ function ccat()
 {
   pygmentize -g "${@}"
 }
+
+function designer()
+{
+  /usr/lib/qt6/bin/designer "${@}"
+}
