@@ -169,3 +169,34 @@ function designer()
 {
   /usr/lib/qt6/bin/designer "${@}"
 }
+
+function python_venv()
+{
+  d="${1}"
+  if [[ "${d}" == "" ]]; then
+    d="./venv"
+  fi
+  python -m venv "${d}"
+  echo "source ${d}/bin/activate"
+}
+
+alias lsblk='lsblk -io NAME,SIZE,TYPE,MOUNTPOINTS,UUID,MODEL'
+
+__sctl_last=""
+
+function sctl()
+{
+  local cmd="${1}"
+  local unit="${2}"
+  if [[ "${cmd}" == "dr" || "${cmd}" == "daemon-reload" ]]; then
+    sudo systemctl daemon-reload
+    return $?
+  fi
+  if [[ "${unit}" == "" ]]; then
+    unit="${__sctl_last}"
+  fi
+
+  __sctl_last="${unit}"
+  sudo systemctl "${cmd}" "${unit}"
+  return $?
+}

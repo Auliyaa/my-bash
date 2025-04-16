@@ -10,6 +10,13 @@ sudo systemctl enable coolercontrold
 sudo systemctl restart coolercontrold
 ```
 
+And create **/etc/modules-load.d/nct6775.conf**:
+
+```
+# Load nct6775.ko at boot
+nct6775
+```
+
 # system LEDs
 
 ```bash
@@ -39,5 +46,5 @@ yay -S --noconfirm steam lutris heroic-games-launcher wine winetrics lib32-gnutl
 # Other software
 
 ```bash
-yay -S --noconfirm baobab discord dropbox vlc git visual-studio-code-bin yakuake
+yay -S --noconfirm baobab discord dropbox vlc git visual-studio-code-bin yakuake python-pip python gitkraken veracrypt python-pygments
 ```
