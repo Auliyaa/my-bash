@@ -58,15 +58,12 @@ Edit kernel command line in /etc/kernel/cmdline and append
 ... splash
 ```
 
-and regenerate boot options:
-```
-sudo reinstall kernels
-```
-
-Now set the theme:
+Now set the theme and rebuild initramfs:
 
 ```bash
-yay -S --noconfirm plymouth-theme-endeavouros
+yay -S --noconfirm plymouth-theme-arch-os
+sudo plymouth-set-default-theme -R arch-os
+sudo reinstall kernels # regenerate boot options and update initramfs
 ```
 
 # KDE configuration
@@ -77,6 +74,24 @@ yay -S --noconfirm plymouth-theme-endeavouros
 - Window decoration: Large icon size
 - Icons: Papirus Dark
 - Splash screen: Kuro the cat
+
+# nvidia
+
+**/etc/dracut.conf.d/nvidia.conf**
+
+```
+force_drivers+=" nvidia nvidia_modeset nvidia_uvm nvidia_drm "
+```
+
+**/etc/modules-load.d/nvidia.conf**
+
+```
+nvidia nvidia_modeset nvidia_uvm nvidia_drm
+```
+
+```bash
+sudo reinstall-kernels
+```
 
 # Launchers setup
 
