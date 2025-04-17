@@ -63,7 +63,7 @@ Now set the theme and rebuild initramfs:
 ```bash
 yay -S --noconfirm plymouth-theme-arch-os
 sudo plymouth-set-default-theme -R arch-os
-sudo reinstall kernels # regenerate boot options and update initramfs
+sudo reinstall-kernels # regenerate boot options and update initramfs
 ```
 
 # KDE configuration
