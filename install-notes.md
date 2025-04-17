@@ -17,6 +17,19 @@ And create **/etc/modules-load.d/nct6775.conf**:
 nct6775
 ```
 
+# manual swapfile creation (potential fix for black screen on login)
+
+```bash
+mkswap -U clear --size 8G --file /swapfile
+swapon /swapfile
+```
+
+then add to **/etc/fstab**
+
+```
+/swapfile none swap defaults 0 0
+```
+
 # system LEDs
 
 ```bash

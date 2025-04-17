@@ -180,7 +180,7 @@ function python_venv()
   echo "source ${d}/bin/activate"
 }
 
-alias lsblk='lsblk -io NAME,SIZE,TYPE,MOUNTPOINTS,UUID,MODEL'
+alias lsblk='lsblk -io NAME,LABEL,SIZE,TYPE,MOUNTPOINTS,UUID,MODEL'
 
 __sctl_last=""
 
