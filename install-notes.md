@@ -36,6 +36,39 @@ then add to **/etc/fstab**
 yay -S openrgb
 ```
 
+# Plymouth (also hints about changing kernel options)
+
+systemd-boot entries are located in **/efi/loader/entries**
+
+Install plymouth:
+
+```bash
+yay -S --noconfirm plymouth
+```
+
+add plymouth to dracut by creating **/etc/dracut.conf.d/plymouth.conf**
+
+```
+add_dracutmodules+=" plymouth "
+```
+
+Edit kernel command line in /etc/kernel/cmdline and append
+
+```
+... splash
+```
+
+and regenerate boot options:
+```
+sudo reinstall kernels
+```
+
+Now set the theme:
+
+```bash
+yay -S --noconfirm plymouth-theme-endeavouros
+```
+
 # KDE configuration
 
 - Global theme: Ant-dark
