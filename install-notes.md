@@ -113,6 +113,13 @@ sudo reinstall-kernels
 
 # Login manager
 
+# gdm
+
+```bash
+yay -S --noconfirm gdm gdm-settings
+```
+
+# lightdm (meh)
 sddm seems to have issues on boot (black screen), replace it with lightdm
 
 ```bash
@@ -150,6 +157,16 @@ yay -S --noconfirm steam lutris heroic-games-launcher wine winetrics lib32-gnutl
 
 ```bash
 yay -S --noconfirm baobab discord dropbox vlc git visual-studio-code-bin yakuake python-pip python gitkraken veracrypt python-pygments
+```
+
+# disable kdewalled
+
+**~/.config/kwalletrc**
+
+```
+[Wallet]
+First Use=false
+Enabled=false
 ```
 
 # Troubleshooting from a live usb
