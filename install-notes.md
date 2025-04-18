@@ -113,41 +113,10 @@ sudo reinstall-kernels
 
 # disable amd drivers (integrated GPU)
 
-**/etc/modprobe.d/blacklist-amd.conf**
+**/etc/dracut.conf.d/blacklist-amd.conf**
 
 ```
-blacklist amdgpu
-```
-
-# Login manager
-
-# gdm
-
-```bash
-yay -S --noconfirm gdm gdm-settings
-```
-
-# lightdm (meh)
-sddm seems to have issues on boot (black screen), replace it with lightdm
-
-```bash
-sudo systemctl disable sddm
-yay -S --noconfirm lightdm lightdm-slick-greeter
-sudo systemctl enable lightdm
-cat /etc/lightdm/lightdm.conf | grep greeter-session # only set this if you need to
-# greeter-session=lightdm-slick-greeter
-```
-
-To configure the background image: first move your jpg file to **/etc/lightdm**:
-
-```bash
-sudo mv myfile.jpg /etc/lightdm/bg.jpg
-sudo chown root:root /etc/lightdm/bg.jpg
-sudo chmod 755 /etc/lightdm/bg.jpg
-```
-https://linuxiac.com/nvidia-with-wayland-on-arch-setup-guide/
-[Greeter]
-background=/etc/lightdm/bg.jpg
+omit_dracutmodules+=" amdgpu "
 ```
 
 # Launchers setup
@@ -184,3 +153,10 @@ When booter in live usb (root has no password for eos live usb), open a terminal
 ```bash
 arch-chroot /path/to/your/mountpoint
 ```
+
+# Unresolved issues
+
+## Soundblaster X3
+
+This one seems to cause freezes when login manager starts (no kayboard, no display)
+Replacing it with a X4 seems to workaround the issue for now.
