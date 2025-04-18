@@ -130,10 +130,7 @@ sudo mv myfile.jpg /etc/lightdm/bg.jpg
 sudo chown root:root /etc/lightdm/bg.jpg
 sudo chmod 755 /etc/lightdm/bg.jpg
 ```
-
-Then edit **/etc/lightdm/slick-greeter.conf**
-
-```
+https://linuxiac.com/nvidia-with-wayland-on-arch-setup-guide/
 [Greeter]
 background=/etc/lightdm/bg.jpg
 ```
@@ -153,4 +150,12 @@ yay -S --noconfirm steam lutris heroic-games-launcher wine winetrics lib32-gnutl
 
 ```bash
 yay -S --noconfirm baobab discord dropbox vlc git visual-studio-code-bin yakuake python-pip python gitkraken veracrypt python-pygments
+```
+
+# Troubleshooting from a live usb
+
+When booter in live usb (root has no password for eos live usb), open a terminal and mount your / partition somewhere, then:
+
+```bash
+arch-chroot /path/to/your/mountpoint
 ```
