@@ -80,6 +80,7 @@ sudo reinstall-kernels # regenerate boot options and update initramfs
 **/etc/dracut.conf.d/nvidia.conf**
 
 ```
+omit_dracutmodules+=" kms "
 force_drivers+=" nvidia nvidia_modeset nvidia_uvm nvidia_drm "
 ```
 
@@ -89,8 +90,50 @@ force_drivers+=" nvidia nvidia_modeset nvidia_uvm nvidia_drm "
 nvidia nvidia_modeset nvidia_uvm nvidia_drm
 ```
 
+**/etc/kernel/cmdline**
+
+```
+... nvidia_drm.modeset=1 nvidia_drm.fbdev=1 nvidia.NVreg_EnableGpuFirmware=0 ...
+```
+
+**/etc/environment**
+
+```
+...
+GBM_BACKEND=nvidia-drm
+__GLX_VENDOR_LIBRARY_NAME=nvidia
+```
+
 ```bash
+nvidia-inst # reinstall nvidia drivers via endeavour os script
 sudo reinstall-kernels
+```
+
+# Login manager
+
+sddm seems to have issues on boot (black screen), replace it with lightdm
+
+```bash
+sudo systemctl disable sddm
+yay -S --noconfirm lightdm lightdm-slick-greeter
+sudo systemctl enable lightdm
+cat /etc/lightdm/lightdm.conf | grep greeter-session # only set this if you need to
+# greeter-session=lightdm-slick-greeter
+```
+
+To configure the background image: first move your jpg file to **/etc/lightdm**:
+
+```bash
+sudo mv myfile.jpg /etc/lightdm/bg.jpg
+sudo chown root:root /etc/lightdm/bg.jpg
+sudo chmod 755 /etc/lightdm/bg.jpg
+```
+
+Then edit **/etc/lightdm/slick-greeter.conf**
+
+```
+[Greeter]
+background=/etc/lightdm/bg.jpg
 ```
 
 # Launchers setup
