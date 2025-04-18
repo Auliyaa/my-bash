@@ -77,6 +77,8 @@ sudo reinstall-kernels # regenerate boot options and update initramfs
 
 # nvidia
 
+[Source](https://linuxiac.com/nvidia-with-wayland-on-arch-setup-guide/)
+
 **/etc/dracut.conf.d/nvidia.conf**
 
 ```
