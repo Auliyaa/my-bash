@@ -200,3 +200,8 @@ function sctl()
   sudo systemctl "${cmd}" "${unit}"
   return $?
 }
+
+function loginctl_session_type()
+{
+  loginctl show-session $(loginctl --json=short | jq -r '.[0].session') -p Type | cut -f 2- -d '='
+}

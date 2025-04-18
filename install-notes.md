@@ -111,6 +111,14 @@ nvidia-inst # reinstall nvidia drivers via endeavour os script
 sudo reinstall-kernels
 ```
 
+# disable amd drivers (integrated GPU)
+
+**/etc/modprobe.d/blacklist-amd.conf**
+
+```
+blacklist amdgpu
+```
+
 # Login manager
 
 # gdm
@@ -156,7 +164,7 @@ yay -S --noconfirm steam lutris heroic-games-launcher wine winetrics lib32-gnutl
 # Other software
 
 ```bash
-yay -S --noconfirm baobab discord dropbox vlc git visual-studio-code-bin yakuake python-pip python gitkraken veracrypt python-pygments
+yay -S --noconfirm baobab discord dropbox vlc git visual-studio-code-bin yakuake python-pip python gitkraken veracrypt python-pygments gameconqueror jq
 ```
 
 # disable kdewalled
