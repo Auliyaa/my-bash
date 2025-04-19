@@ -205,3 +205,19 @@ function loginctl_session_type()
 {
   loginctl show-session $(loginctl --json=short | jq -r '.[0].session') -p Type | cut -f 2- -d '='
 }
+
+function pkill()
+{
+  if [[ "${@}" == "" ]]; then
+    echo 'pkill <search string>'
+    return 1
+  fi
+
+  for p in "$(ps aux | grep "${@}" | grep -v grep | awk '{print $2}')"; do
+    if [[ "${p}" == "" ]]; then
+      continue
+    fi
+    echo ".. killing pid ${p}"
+    kill -9 $p
+  done
+}

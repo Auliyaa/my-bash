@@ -111,6 +111,17 @@ nvidia-inst # reinstall nvidia drivers via endeavour os script
 sudo reinstall-kernels
 ```
 
+# gaming tweaks
+
+see [this page](https://wiki.archlinux.org/title/Gaming#Starting_games_in_a_separate_X_server) for reference
+
+## Increase vm.max_map_count
+
+**/etc/sysctl.d/00-gamecompatibility.conf**
+```
+vm.max_map_count = 2147483642
+```
+
 # disable amd drivers (integrated GPU)
 
 **/etc/dracut.conf.d/blacklist-amd.conf**
