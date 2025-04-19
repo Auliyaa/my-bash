@@ -111,6 +111,22 @@ nvidia-inst # reinstall nvidia drivers via endeavour os script
 sudo reinstall-kernels
 ```
 
+# Steam
+
+## install additional packages
+
+If steam window does not show on startup, install **lib32-nvidia-utils**:
+
+```bash
+yay -S --noconfirm lib32-nvidia-utils
+```
+
+## show logs and run from console
+
+```bash
+steam --help
+```
+
 # gaming tweaks
 
 see [this page](https://wiki.archlinux.org/title/Gaming#Starting_games_in_a_separate_X_server) for reference
